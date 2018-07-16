@@ -24,8 +24,7 @@ Plugin configuration in your build.gradle
 ```
 buildscript {
     dependencies {
-        classpath 'com.github.skhatri:gradle-s3-plugin:1.0.4'
-        classpath 'joda-time:joda-time:2.4'
+        classpath 'net.sympower.gradle:gradle-s3-plugin:1.0.5'
     }
     repositories {
         mavenCentral()
@@ -34,7 +33,7 @@ buildscript {
 apply plugin: 's3'
 
 s3 {
-    bucket = 'skhatri-bucket'
+    bucket = 'sample-bucket'
     awsProfile = 'default'
     upload {
         //"key" is the name of the target file in S3 (in this example we create a versioned file)
