@@ -1,5 +1,3 @@
-import org.gradle.api.artifacts.maven.MavenDeployment
-
 apply plugin: 'groovy'
 apply plugin: 'idea'
 apply plugin: 'maven'
@@ -57,7 +55,7 @@ uploadArchives {
             pom.project {
                 name 'Gradle S3 Plugin'
                 description 'Plugin upload and download files from AWS S3 buckets'
-                url 'https://github.com/skhatri/gradle-s3-plugin'
+                url 'https://github.com/sympower/gradle-s3-plugin'
                 licenses {
                     license {
                         name 'The Apache Software License, Version 2.0'
@@ -67,20 +65,19 @@ uploadArchives {
                 }
                 developers {
                     developer {
-                        id 'skhatri'
-                        name 'Suresh Khatri'
-                        email 'kc2005au@gmail.com'
-                        url 'https://github.com/skhatri'
+                        id 'nemecec'
+                        name 'Neeme Praks'
+                        url 'https://github.com/nemecec'
                         roles {
                             role 'Developer'
                         }
                     }
                 }
                 scm {
-                    connection 'scm:git:https://github.com/skhatri/gradle-s3-plugin.git'
-                    developerConnection 'scm:git:https://github.com/skhatri/gradle-s3-plugin.git'
+                    connection 'scm:git:https://github.com/sympower/gradle-s3-plugin.git'
+                    developerConnection 'scm:git:https://github.com/sympower/gradle-s3-plugin.git'
                     tag 'HEAD'
-                    url 'https://github.com/skhatri/gradle-s3-plugin'
+                    url 'https://github.com/sympower/gradle-s3-plugin'
                 }
             }
         }
