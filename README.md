@@ -1,9 +1,11 @@
 Gradle S3 Plugin
 ----------------
 
-This plugin can be used to download files from S3 buckets. You can upload artifacts to S3 as well. The link configuration attribute can be used to create `amz-website-redirect-location` based redirects. Technically this is not a symbolic link, but it can behave like one when trying to reference same file from multiple locations.
+This is a fork of [skhatri/gradle-s3-plugin](https://github.com/skhatri/gradle-s3-plugin ) - as that project maintainer was unresponsive to our pull requests, we forked it and released our own version of it. Changes are kept to bare minimum (for now).
 
-The plugin creates two tasks:
+The plugin can be used to download from and upload to S3 buckets. The link configuration attribute can be used to create `amz-website-redirect-location` based redirects. Technically this is not a symbolic link, but it can behave like one when trying to reference same file from multiple locations.
+
+It creates two tasks:
 
 # s3Upload
 As the name suggests, the `s3Upload` task can be used to upload a local file to a bucket with a given key name.
