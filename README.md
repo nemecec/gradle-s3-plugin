@@ -26,7 +26,7 @@ Plugin configuration in your build.gradle
 ```
 buildscript {
     dependencies {
-        classpath 'net.sympower.gradle:gradle-s3-plugin:1.0.5'
+        classpath 'net.sympower.gradle:gradle-s3-plugin:1.0.6'
     }
     repositories {
         mavenCentral()
