@@ -9,7 +9,6 @@ import com.amazonaws.services.s3.model.CannedAccessControlList
 import com.amazonaws.services.s3.model.ObjectMetadata
 import com.amazonaws.services.s3.model.PutObjectRequest
 import com.amazonaws.services.s3.model.S3Object
-import org.joda.time.LocalDateTime
 
 public class S3Client {
     private final AmazonS3Client s3Client;
@@ -40,7 +39,9 @@ public class S3Client {
             s3Client.putObject(putObjectRequest)
             String linkName = createLinkObject(link, key, bucketName)
             if (linkName == null) {
-                linkName = s3Client.generatePresignedUrl(bucketName, key, new LocalDateTime().plusDays(7).toDate())
+                // 7 days into the future
+                Date expirationTime = dateXDaysInTheFuture(System.currentTimeMillis(), 7)
+                linkName = s3Client.generatePresignedUrl(bucketName, key, expirationTime)
             }
             return linkName
         } catch (Exception e) {
@@ -57,8 +58,15 @@ public class S3Client {
             PutObjectRequest linkPutRequest = new PutObjectRequest(bucketName, link, inputStream, metadata)
             linkPutRequest.setCannedAcl(CannedAccessControlList.Private)
             s3Client.putObject(linkPutRequest);
-            return s3Client.generatePresignedUrl(bucketName, link, new LocalDateTime().plusDays(7).toDate());
+            // 7 days into the future
+            Date expirationTime = dateXDaysInTheFuture(System.currentTimeMillis(), 7)
+            return s3Client.generatePresignedUrl(bucketName, link, expirationTime);
         }
+    }
+
+    private Date dateXDaysInTheFuture(long baseTime, int numOfDays) {
+        // Use milliseconds for calculation to work around issues with daylight saving time
+        return new Date(baseTime + numOfDays * 24 * 60 * 60 * 1000)
     }
 
     private String createRedirectKey(String key) {
